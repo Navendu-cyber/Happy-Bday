@@ -1,0 +1,259 @@
+/* General Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(45deg, #ff7e5f, #feb47b);  /* Attractive gradient background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    flex-direction: column;  /* Align content vertically */
+}
+
+/* Twinkling Stars */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, white, rgba(255, 255, 255, 0) 70%);
+    background-size: 2px 2px;
+    background-repeat: repeat;
+    animation: twinkle 3s infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+/* Dynamic Glow Effect */
+.light-rays {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 70%);
+    filter: blur(50px);
+    transform: translate(-50%, -50%);
+    animation: glowPulse 3s infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes glowPulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0.3;
+    }
+}
+
+/* Main Text */
+.message {
+    z-index: 3; /* Ensure the message is in front of all elements */
+    position: relative;
+    text-align: center;
+    margin-bottom: 30px;
+    padding-top: 30px;
+}
+
+.message h1 {
+    font-size: 3.5em;  /* Increased font size for better visibility */
+    color: white;
+    margin: 10px 0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    animation: typing 4s steps(30, end), blink 0.5s step-end infinite;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid white;
+    display: inline-block;
+    max-width: 100%;
+}
+
+/* Subtext below the cake */
+.message .subtitle {
+    font-size: 1.5em;  /* Slightly larger subtext for better visibility */
+    margin-top: 50px;  /* Added margin to ensure it is well below the cake */
+    animation: fadeIn 2s ease-in-out 4s both, colorChange 5s infinite;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 3;
+    margin-bottom: 40px; /* Added space below the subtitle */
+}
+
+@keyframes colorChange {
+    0% { color: #ff9999; }
+    25% { color: #ff66b2; }
+    50% { color: #99ccff; }
+    75% { color: #ffcc66; }
+    100% { color: #ccff99; }
+}
+
+@keyframes typing {
+    0% {
+        max-width: 0;
+    }
+    100% {
+        max-width: 100%;
+    }
+}
+
+@keyframes blink {
+    0%, 100% {
+        border-right-color: white;
+    }
+    50% {
+        border-right-color: transparent;
+    }
+}
+
+/* Cake */
+.cake {
+    position: relative;
+    margin: 40px auto; /* Adjusted margin to provide more space */
+    width: 200px;
+    height: 150px;
+    z-index: 2; /* Behind the text but still visible */
+    animation: bounce 2s infinite ease-in-out;
+}
+
+.cake .base {
+    width: 100%;
+    height: 100px;
+    background: #f9c74f;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 0;
+}
+
+.cake .candles {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.cake .candle {
+    width: 10px;
+    height: 50px;
+    background: #ff6f61;
+    border-radius: 5px;
+    position: relative;
+    animation: flicker 0.8s infinite;
+}
+
+.cake .candle:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: yellow;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.8), 0 0 20px rgba(255, 255, 0, 0.5);
+    animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px rgba(255, 255, 0, 0.8), 0 0 20px rgba(255, 255, 0, 0.5);
+    }
+    to {
+        box-shadow: 0 0 20px rgba(255, 255, 0, 1), 0 0 30px rgba(255, 255, 0, 0.7);
+    }
+}
+
+/* Rose Petals Falling Effect */
+.rose-petal {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #ff69b4;
+    border-radius: 50%;
+    animation: fall 3s linear infinite;
+    opacity: 0.9;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Copyright Footer */
+.copyright {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1em;
+    color: black;
+    opacity: 0.7;
+    font-style: italic;
+    animation: fadeInCopyright 3s ease-in-out infinite;
+}
+
+@keyframes fadeInCopyright {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .message h1 {
+        font-size: 2.5em;  /* Smaller font for mobile */
+    }
+
+    .subtitle {
+        font-size: 1.2em;  /* Slightly smaller subtext */
+    }
+
+    .cake {
+        width: 150px;  /* Adjust cake size for smaller screens */
+        height: 120px;
+    }
+
+    .cake .base {
+        height: 80px;  /* Adjust cake base for mobile */
+    }
+
+    .rose-petal {
+        width: 10px;
+        height: 10px;
+    }
+
+    .copyright {
+        font-size: 0.8em;  /* Smaller font for copyright */
+    }
+}
+
